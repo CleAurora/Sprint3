@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex 1 - News</title>
+
+    <!--Fontes-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <!--Estilo-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="news">
+            <h1 class="news__title" id="formTitle">Se inscreva para receber mais informações</h1>
+            <form action="" class="news__form">
+                <div class="news__form-group">
+                    <label for="newsInputEmail" class="news__label">
+                        Email
+                    </label>
+                    <input onchange="aceiteInput()" type="email" class="news__input" id="newsInputEmail" 
+                        placeholder="email@exemplo.com.br">
+                </div>
+                <div class="news__form-group">
+                    <button class="button news__button" id="news__button" disabled>Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const inputEmail = document.querySelector(".news__input");
+        const newsButton = document.querySelector('#news__button');
+
+        // function cadastrarEmail(){
+        //     //event.preventDefault();
+        //     console.log(inputEmail, newsButton);
+        // }
+        // newsButton.addEventListener('click', function(){
+        //     console.log('testando');
+        // });
+
+        let objetoString = inputEmail.value;
+       
+            if (objetoString.length > 5){
+                event.preventDefault();
+                console.log('deu certo');
+            }else{
+                console.log("botão inabilitado ainda");
+            }
+        
+        function aceiteInput(){
+            var x=document.getElementById("fname");
+            x.value=x.value.toUpperCase();
+        }
+
+        newsButton.addEventListener('click', function(){});
+            
+        
+    </script>
+    
+</body>
+</html>
