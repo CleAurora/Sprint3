@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />  
+    <title>InLock - Personagens</title>
+
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+    <table id="tabela-lista">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Título</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabela-lista-corpo"></tbody>
+    </table>
+
+
+    <script>
+        const tabela = document.querySelector('#tabela-lista-corpo');
+
+        window.onload = () =>{
+            const URL = 'https://salty-atoll-57329.herokuapp.com/personagens';
+            fetch(URL).then(resposta => resposta.json()).then(data=>preencherTabela(data)).catch(erro=>console.log(erro));
+        
+
+            function preencherTabela(herois){
+                herois.forEach(element => {
+                    
+                    const tr = document.createElement('tr');
+                    const td_hashtag = document.createElement('td');
+                    const td_titulo = document.createElement('td');
+                    const td_acao = document.createElement('td');
+                    const foto = document.createElement('IMG');
+
+                    foto.src = element.urlImagem;
+                    foto.style.width = "120px";
+
+                    td_hashtag.textContent = element.nome;
+                    td_titulo.textContent = element.lancamento;
+
+                    tabela.appendChild(tr);
+                    tr.appendChild(td_hashtag);
+                    tr.appendChild(td_titulo);
+                    tr.appendChild(td_acao);
+                    td_acao.appendChild(foto);
+
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
