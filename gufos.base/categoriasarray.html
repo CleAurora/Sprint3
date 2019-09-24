@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gufos - Eventos públicos e privados</title>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="./assets/css/flexbox.css" />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    
+  </head>
+
+<body>
+    <script>
+        const div = document.createElement('div');
+        let arr = [{numero:1, nome: "testando"}, {numero:2, nome: "testando de novo"},  {numero:3, nome: "já disse, está testando"}];
+        //console.log(arr[4]);
+        //console.log(arr.length);
+
+        // arr.forEach((Element, index) =>{
+        //     console.log(Element, index);
+        // });
+
+        // for(let i= 0; i<arr.length; i++){
+        //     console.log(arr[i]);
+        // }
+        
+        // let i = 0;
+        // while(i<arr.length){
+        //     console.log(arr[i]);
+        //     i++;
+        // }
+
+        // arr.push("Eventos D");
+        // console.log(arr);
+
+        // arr.pop();
+        // console.log(arr);
+
+        // console.log(arr.join(" - "));
+        
+        //console.log(arr.sort());
+        // console.log(arr.sort().reverse());
+        // console.log(arr.reverse());
+
+        // let arr_2 = arr.map(element =>{
+        //     return element + ' teste';
+        // });
+
+        // arr_2.map(element =>{
+        //     confirm.log(element);
+        // });
+
+        // arr.map(element =>{
+        //     console.log(element.nome);
+        // });
+
+        // let numero = [10, 20, 30, 40, 50];
+        // let variavel = numero.map(Element =>{
+        //     if(Element >= 30){
+        //         //console.log(Element);
+        //         return Element;
+        //     }
+        // });
+
+        // let variavel = numero.filter(Element =>{
+        //     return Element >= 30;
+        // });
+
+        // variavel.filter(Element =>{
+        //     console.log(Element == 30);
+        // });
+
+
+        // console.log(variavel);
+
+        // console.log(arr_2);
+
+        let numeros = [10, 20, 30, 40];
+        
+        let soma = numeros.reduce((prevValue, Element) => {
+            //console.log(prevValue);
+            return prevValue + Element
+        });
+
+        console.log(soma);
+        
+
+    </script>
+</body>
+</html>
