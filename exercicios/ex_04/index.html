@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokemon</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <header>
+        <h1>Pokémon</h1>
+    </header>
+
+    <main id="conteudoPrincipal">
+        
+        <form>
+            <input type="text" class = "class_pokemon" id="input_pokemon" placeholder="Digite o Pokemon">
+            <br>
+            <button id = "btn_pokemon" class = "btn_pokemon">Listar Características</button>
+        </form>
+
+        <!-- Criando minha tabela -->
+        <table id = "tabela-lista">
+            <thead>
+                <th>Habilidades</th>
+                <th>Altura</th>
+                <th>Peso</th>
+                <th>Foto</th>
+            </thead>
+            <tbody id="tabela-lista-corpo"></tbody>
+        </table>
+
+    </main>
+
+    <footer>
+        <p>Pokémon's Lovers</p>
+    </footer>
+
+    <script>
+        const input_pokemon = document.querySelector(".class_pokemon");
+        const btn_pokemon = document.querySelector(".btn_pokemon");
+        const tabela = document.querySelector("#tabela-lista-corpo");
+        const main = document.querySelector("#conteudoPrincipal")
+
+        btn_pokemon.addEventListener('click', function(){
+            event.preventDefault();
+            const URL = "https://pokeapi.co/api/v2/pokemon/" 
+            const URLBuscada = URL + input_pokemon.value.toLowerCase();
+            fetch(URLBuscada).then(resposta=>resposta.json()).then(data=> preencherTabela(data)).catch(erro=>mostrarErro(erro));
+
+            function preencherTabela(element) {
+                const tr = document.createElement('tr');
+                const td_habilidades = document.createElement('td');
+                const td_altura = document.createElement('td');
+                const td_peso = document.createElement('td');
+                const td_acao = document.createElement('td');
+                const foto = document.createElement('IMG');
+
+                foto.src = element.sprites.front_default;
+                // foto.style.width = "120px";
+
+                element.abilities.map(Element => {
+                    let pHabilidade = document.createElement("p");
+                    pHabilidade.textContent = Element.ability.name;
+                    td_habilidades.appendChild(pHabilidade); 
+                });
+                td_altura.textContent = element.height;
+                td_peso.textContent = element.weight;
+
+
+                tabela.appendChild(tr);
+                tr.appendChild(td_habilidades);
+                tr.appendChild(td_altura);
+                tr.appendChild(td_peso);
+                td_acao.appendChild(foto);
+                tr.appendChild(td_acao);
+                
+            }
+
+            function mostrarErro(element){
+                let pErro = document.createElement("p")
+                pErro.textContent = "Oops! Deu erro!" + element;
+                main.appendChild(pErro);
+            }
+        });
+    </script>
+    
+</body>
+</html>

@@ -86,7 +86,18 @@
 
 // 4	Mostre o nome e a quantidade de jogos, quantidade de vitorias, empates, derrotas, golsProprios, golsContras, saldo de gols de um time.
         
+        // times.map(Element=>{
+        //     console.log(Element.nome, Element.vitorias + Element.derrotas + Element.empates, Element.vitorias, Element.empates, Element.derrotas, Element.golsproprio, Element.golscontra, Element.golscontra+Element.golsproprio);
+        // });
+
 // 5	Informe a quantidade de jogos do campeonato;
+        let qteJogos = 0;
+        times.map(Element =>{
+            qteJogos += (Element.vitorias+Element.derrotas+Element.empates);
+            return(qteJogos);
+        });
+        console.log(qteJogos);
+
 
     </script>
 
