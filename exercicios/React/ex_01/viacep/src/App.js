@@ -12,6 +12,7 @@ class ViaCep extends Component{
   constructor(){
     super();
     this.state = {
+      lista: [],
       cep: '',
       logradouro: '',
       complemento: '',
@@ -33,7 +34,6 @@ class ViaCep extends Component{
 
   atualizaCEP = (event) =>{
     this.setState({cep:event.target.value})
-    console.log(this.state);
   }
 
   trazInfomacoes = (event) =>{
@@ -42,18 +42,18 @@ class ViaCep extends Component{
 
       .then(response =>{
         if(response.status === 200){
-          console.log(response.data)
-          // this.props.history.push('/viacep');
+          let data = response.data;
+          
           this.setState({
-            cep: response.cep,
-            logradouro: response.logradouro,
-            complemento: response.complemento,
-            bairro: response.bairro,
-            localidade: response.localidade,
-            uf: response.uf,
-            unidade: response.unidade,
-            ibge: response.ibge,
-            gia: response.gia,
+            cep: data.cep,
+            logradouro: data.logradouro,
+            complemento: data.complemento,
+            bairro: data.bairro,
+            localidade: data.localidade,
+            uf: data.uf,
+            unidade: data.unidade,
+            ibge: data.ibge,
+            gia: data.gia,
           })
         }else{
           console.log("Oops! Deu erro! Vc digitou só números? Tem algum caractere estranho?")
@@ -71,7 +71,7 @@ class ViaCep extends Component{
       <div>
         <header className="cabecalhoPrincipal">
           <div className="container">
-            <img src={logo} />
+            <img alt="logo" src={logo} />
             <h1>Meu CEP</h1>
           </div>
         </header>
